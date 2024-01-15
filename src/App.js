@@ -1,8 +1,15 @@
+import Body from "./Components/Body";
+import { Toaster } from "react-hot-toast";
+import { Provider } from "react-redux";
+import AppStore from "./Redux/Store/AppStore";
 function App() {
   return (
-    <div className="App">
-      <h1 className="bg-orange-500"> Joke Jive</h1>
-    </div>
+    <Provider store={AppStore}> 
+      <div className="App">
+        <Toaster />
+        <Body />
+      </div>
+    </Provider>
   );
 }
 
