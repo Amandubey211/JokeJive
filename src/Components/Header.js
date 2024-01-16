@@ -18,7 +18,7 @@ const Header = ({ page }) => {
   };
   return (
     <div
-      className={`flex justify-between items-center md:py-3 py-2  shadow-md md:px-16 px-4 ${
+      className={`flex justify-between items-center md:py-3 py-2  shadow-md md:ps-16 pe-10 px-4 ${
         !theme && "bg-[#303136] text-white"
       }`}
     >
@@ -27,23 +27,28 @@ const Header = ({ page }) => {
           <span className="text-[#00ac96] font-bold"> J</span>oke-
           <span className="font-bold text-[#00ac96]">J</span>ike
         </Link>
-        {/* <Link
-          to="/about"
-          className="text-[#00ac96] font-bold hover:text-[#053932]"
-        >
-          About
-        </Link> */}
       </div>
 
       {page !== "welcome" && <SearchBar />}
 
-      <div className="flex justify-start gap-5 items-center ">
+      <div className="flex justify-start gap-4 items-center ">
         <div className="checkbox-wrapper-54">
           <label className="switch">
             <input type="checkbox" onChange={HandleDarkMode} />
             <span className="slider"></span>
           </label>
         </div>
+        {/* <Link
+          title="About"
+          to="/about"
+          className="text-[#00ac96] font-bold flex flex-col items-center  justify-center"
+        >
+          <img
+            src="https://avatars.githubusercontent.com/u/109097090?v=4"
+            className="w-10 rounded-full"
+          />
+          <span className="text-[10px]">About</span>
+        </Link> */}
       </div>
     </div>
   );

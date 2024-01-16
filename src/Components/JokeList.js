@@ -19,7 +19,7 @@ const JokeList = ({ AllJokes }) => {
       {AllJokes?.map((joke, index) => {
         return (
           <JokeCard
-            key={joke.id}
+            key={index}
             data={joke}
             onCopyClick={handleCopyClick}
             isCopied={copiedJokes.includes(joke.id)}

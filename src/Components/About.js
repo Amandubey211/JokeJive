@@ -1,11 +1,7 @@
 import React from "react";
 
 const About = () => {
-  return (
-    <div>
-      <h1>hii i am aman</h1>
-    </div>
-  );
+  return <div>Aman Dubey</div>;
 };
 
 export default About;

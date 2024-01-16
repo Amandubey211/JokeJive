@@ -3,19 +3,22 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { IoCopy, IoCopyOutline } from "react-icons/io5";
 
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { AddCopiedText } from "../Redux/Slices/TextSlice";
 const JokeCard = ({ data, index }) => {
   const [liked, SetLiked] = useState(false);
   const [Copied, SetCopied] = useState(false);
-  const { joke, id, flags, category, setup, delivery } = data;
+  const { joke, id, flags, category, setup, delivery, type } = data;
+  const dispatch = useDispatch();
   const HandleLike = () => {
     SetLiked(!liked);
     if (!liked) {
-      toast.success("Thanks");
+      toast.success("Liked");
     }
   };
   const handleCopy = () => {
-    // Implement the logic to copy the joke text to the clipboard
     SetCopied(!Copied);
+    dispatch(AddCopiedText(joke));
     const timeOutId = setTimeout(() => {
       SetCopied(false);
     }, 2000);
@@ -23,7 +26,6 @@ const JokeCard = ({ data, index }) => {
       .writeText(joke)
       .then(() => {
         toast.success("copied");
-        // clearTimeout(timeOutId);
       })
       .catch((err) => {
         console.error("Error copying joke to clipboard:", err);
@@ -51,25 +53,33 @@ const JokeCard = ({ data, index }) => {
         )}
       </div>
 
-      <div className="md:col-span-2 col-span-12 md:border-l-2  p-2 ">
-        <section className="flex  md:flex-col   justify-between  items-center gap-3   ">
-          <span className="  p-2   font-semibold bg-[#ccf2f2] w-full rounded-md ">
+      <div className="md:col-span-2 col-span-12 md:border-l-2  md:p-2 p-1 ">
+        <section className="flex  md:flex-col   justify-center  items-center gap-1   ">
+          <span
+            className={`text-center p-1   font-semibold ${
+              category === "Dark" ? "bg-red-400" : "bg-green-400"
+            }
+            }  w-full rounded-md`}
+          >
             {category}{" "}
           </span>
-          <div className="flex  items-center justify-end    ">
-            <button className=" cursor-pointer p-2   " onClick={handleCopy}>
+          <span className=" text-center p-1   font-semibold bg-[#ccf2f2] w-full rounded-md capitalize ">
+            {type}{" "}
+          </span>
+          <div className="flex  items-center justify-between px-2 w-full rounded-md  bg-[#ccf2f2]   ">
+            <button className=" cursor-pointer p-1   " onClick={handleCopy}>
               {!Copied ? (
-                <IoCopyOutline className="text-2xl  hover:shadow-2xl hover:scale-110 delay-100 ease-in-out " />
+                <IoCopyOutline className="md:text-xl  hover:shadow-2xl hover:scale-110 delay-100 ease-in-out " />
               ) : (
-                <IoCopy className="text-2xl hover:shadow-2xl hover:scale-110 delay-100 ease-in-out " />
+                <IoCopy className="text-xl hover:shadow-2xl hover:scale-110 delay-100 ease-in-out " />
               )}
             </button>
-            <button className=" cursor-pointer p-2 " onClick={HandleLike}>
+            <button className=" cursor-pointer p-1 " onClick={HandleLike}>
               {" "}
               {liked ? (
-                <FcLike className="text-3xl hover:shadow-2xl hover:scale-110 delay-100 ease-in-out " />
+                <FcLike className="text-xl hover:shadow-2xl hover:scale-110 delay-100 ease-in-out " />
               ) : (
-                <FcLikePlaceholder className="text-3xl hover:shadow-2xl hover:scale-150   delay-75  " />
+                <FcLikePlaceholder className="text-xl hover:shadow-2xl hover:scale-125 ease-in-out animate-pulse   delay-150  " />
               )}
             </button>
           </div>

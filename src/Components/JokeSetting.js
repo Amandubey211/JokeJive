@@ -12,7 +12,7 @@ const JokeSetting = () => {
         !theme && "bg-[#303136] text-white"
       }`}
     >
-        <JokeForm />
+      <JokeForm />
       <div className="flex flex-col justify-center items-center gap-2 p-2 ">
         <b className="mb-4">
           Setting <span className="text-[#00ac96] ">Page</span>{" "}
@@ -23,7 +23,6 @@ const JokeSetting = () => {
           <span className="text-[#00ac96]">start scrolling! </span>{" "}
         </b>
       </div>{" "}
-    
     </div>
   );
 };

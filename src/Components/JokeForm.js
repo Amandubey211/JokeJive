@@ -10,14 +10,11 @@ import {
   setLanguage,
 } from "../Redux/Slices/ApiConfugrationSlice";
 import useGetJokes from "../CustomHooks/useGetJokes";
-import { SetJokes } from "../Redux/Slices/JokeSlice";
 import { useNavigate } from "react-router-dom";
 
 const JokeForm = () => {
   const dispatch = useDispatch();
-  const { category, jokeType, language } = useSelector(
-    (store) => store.ApiConfugration
-  );
+
   const theme = useSelector((store) => store.Theme.light);
   const Navigate = useNavigate();
   const FetchJokes = useGetJokes();
@@ -29,7 +26,7 @@ const JokeForm = () => {
   return (
     <div className="  flex flex-col justify-start gap-6 md:px-10 md:py-5 p-3 shadow-2xl rounded-2xl ">
       <div>
-        <h1 className="md:text-4xl text-2xl font-bold text-[#00ac96]">
+        <h1 className="md:text-3xl text-2xl font-bold text-[#00ac96]">
           Set Up Your page
         </h1>
       </div>
@@ -52,7 +49,7 @@ const JokeForm = () => {
                       <input
                         required
                         type="radio"
-                        className="me-2 accent-[#00ac96] "
+                        className="me-1 accent-[#00ac96] "
                         id={data.value}
                         onChange={(e) => dispatch(SetCategory(e.target.value))}
                         name="category"
@@ -80,7 +77,6 @@ const JokeForm = () => {
                 {Languages.map((data) => {
                   return (
                     <option key={data.value} value={data.value}>
-                      {/* //dark mode  bg-black text-white */}
                       {data.title}
                     </option>
                   );
@@ -136,8 +132,8 @@ const JokeForm = () => {
               className="bg-[#00ac96] py-2 px-5 rounded-sm flex justify-center items-center gap-3 anima"
               onClick={HandleSubmit}
             >
-              <span className="font-bold md:block hidden">See The Magic </span>{" "}
-              <span className="font-bold md:hidden block">Next </span>{" "}
+              <span className="font-bold md:block hidden">Start </span>{" "}
+              <span className="font-bold md:hidden block">Start </span>{" "}
               <FaArrowRightLong className="text-xl" />
             </button>
           </div>

@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WelcomePage from "./WelcomePage";
 import MainPage from "./MainPage";
-import About from "./About";
+
 import ErrorPage from "./ErrorPage";
 import MemePage from "./MemePage";
 import JokeSetting from "./JokeSetting";
-
 const Body = () => {
+  const About = lazy(() => import("./About"));
   const AppRouter = createBrowserRouter([
     {
       path: "/",
@@ -21,7 +21,11 @@ const Body = () => {
     },
     {
       path: "/about",
-      element: <About />,
+      element: (
+        <Suspense fallback={<span> please wait..</span>}>
+          <About />
+        </Suspense>
+      ),
       errorElement: <ErrorPage />,
     },
     {

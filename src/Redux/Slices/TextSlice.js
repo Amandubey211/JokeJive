@@ -7,7 +7,7 @@ const TextSlice = createSlice({
   },
   reducers: {
     AddCopiedText: (state, action) => {
-      state.copyBtn = action.payload;
+      state.CopiedText = action.payload;
     },
   },
 });
