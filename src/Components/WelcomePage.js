@@ -47,7 +47,7 @@ const WelcomePage = () => {
             </Link>
           </div>
         </div>
-        <div className="p-5 flex  justify-center items-center flex-col gap-4">
+        <div className="p-2 flex  justify-center items-center flex-col gap-4">
           {/* <b>Scroll for instant mood boost!</b> */}
           <img className="w-96 " src={welcome} />
           <div className="flex gap-1 items-center justify-center  flex-wrap ">
